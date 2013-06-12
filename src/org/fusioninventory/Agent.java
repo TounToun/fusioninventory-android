@@ -346,7 +346,7 @@ public class Agent
 
         HttpProtocolParams.setVersion(params, HttpVersion.HTTP_1_1);
         HttpProtocolParams.setContentCharset(params, "UTF-8");
-        //HttpProtocolParams.setUseExpectContinue(params, true);
+        HttpProtocolParams.setUseExpectContinue(params, true);
 
         //Send FusionInventory specific user agent
         //TODO get App version from manifest or somewhere else
