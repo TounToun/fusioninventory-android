@@ -34,7 +34,12 @@
 		<string name="AccueilGlobalTitle">Général</string>
 		<string name="AccueilGlobalParam">Paramètres généraux</string>
 		<string name="AccueilGlobalParamSummary">Certificat, adresse du serveur, etc...</string>
-
+		
+   <!-- QRDroid part -->
+   
+   		<string name="AccueilQRDroidTitle">QRCode</string>
+		<string name="AccueilQRDroidParam">Configurer avec QRDroid</string>
+		<string name="AccueilQRDroidParamSummary">Configurer avec un QRCode</string>
 
 
 </resources>

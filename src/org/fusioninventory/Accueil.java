@@ -32,7 +32,8 @@ OnSharedPreferenceChangeListener {
     private String[] STATUS_AGENT = null;
     private boolean isAgentOk = false;
     private String barcode = null;
-
+    
+    private static final int ACTIVITY_RESULT_QR_DRDROID = 0;
     private boolean notif = false;
 
     private boolean ssh = false;
@@ -271,6 +272,27 @@ OnSharedPreferenceChangeListener {
                 }
 
             });
+            
+            Preference QrScan = findPreference("QRScan");
+            QrScan.setOnPreferenceClickListener(new OnPreferenceClickListener() {
+                public boolean onPreferenceClick(Preference preference) {
+                  
+                	Log.i("QRSCAN","QRSCAN ON");
+                      //Create a new Intent to send to QR Droid
+            		Intent qrDroid = new Intent("la.droid.qr.scan"); 
+            			
+            		//Notify we want complete results (default is FALSE)
+            		qrDroid.putExtra("la.droid.qr.complete" , true);
+            				
+            		//Send intent and wait result
+            		startActivityForResult(qrDroid, 0);
+
+                    return true;
+                }
+
+            });
+            
+            
         }
 
     protected void onResume() {
@@ -294,4 +316,24 @@ OnSharedPreferenceChangeListener {
             pref.setSummary(listp.getValue());
         }
     }
+    
+    
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+		super.onActivityResult(requestCode, resultCode, data);
+		
+		if( ACTIVITY_RESULT_QR_DRDROID ==requestCode && null!=data && data.getExtras()!=null ) {
+			//Read result from QR Droid (it's stored in la.droid.qr.result)
+			String result = data.getExtras().getString("la.droid.qr.result");
+			//Just set result to EditText to be able to view it
+			Log.v("URLresult",result);
+			
+			SharedPreferences mPrefs = PreferenceManager.getDefaultSharedPreferences(getBaseContext());
+        	SharedPreferences.Editor editor = mPrefs.edit();
+        	editor.putString("url",result);
+        	editor.commit();
+
+		}
+	 
+		
+	}
 }

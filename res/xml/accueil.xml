@@ -19,6 +19,12 @@
         android:key="runInventory"
         android:dependency="autoInventory"
         />
+     <Preference
+        android:title="@string/AccueilQRDroidParam"
+        android:summary="@string/AccueilQRDroidParamSummary"
+        android:key="QRScan"
+        
+        />
     <PreferenceScreen
         android:title="@string/AccueilInventoryParam"
         android:summary="@string/AccueilInventoryParamSummary"

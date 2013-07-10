@@ -35,6 +35,10 @@
 		<string name="AccueilGlobalParam">Global settings</string>
 		<string name="AccueilGlobalParamSummary">Setup certificates, server ...</string>
 
-
+   <!-- QRDroid part -->
+   
+   		<string name="AccueilQRDroidTitle">QRCode</string>
+		<string name="AccueilQRDroidParam">Set URL with QRCode</string>
+		<string name="AccueilQRDroidParamSummary">Set URL with the QRDroid Scanner...</string>
 
 </resources>
